@@ -1,0 +1,18 @@
+p {
+    text-indent: 2em;
+}
+
+.login,
+.register {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 33%;
+    margin: 0 auto;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

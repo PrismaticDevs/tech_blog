@@ -1,0 +1,9 @@
+<ul class="list-group">
+  {{#each users as |user|}}
+    <li class="list-group-item">
+      <h1>My id is: {{user.id}}</h1>
+      <h1>My name is: {{user.username}}</h1>
+      <h1>My email is: {{user.email}}</h1>
+    </li>
+  {{/each}}
+</ul>
