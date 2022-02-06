@@ -50,7 +50,7 @@ module.exports = {
     },
     login: async(req, res) => {
 
-        console.log(req.body);
+        console.log(req.body, 53);
         try {
             //	first find the user with the given email address
             const userData = await User.findOne({

@@ -1,19 +1,24 @@
-const email = document.getElementById('email').value
-const password = document.getElementById('password').value
+const $login_email = document.getElementById('login_email').value
+const $login_password = document.getElementById('login_password').value
+const $login_submit = document.getElementById('login_submit');
 
-fetch("http://example.com/api/endpoint/", {
-        method: "post",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
+async function login() {
+    await fetch("/login", {
+            method: "post",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
 
-        //make sure to serialize your JSON body
-        body: JSON.stringify({
-            email: email,
-            password: password
+            //make sure to serialize your JSON body
+            body: JSON.stringify({
+                email: $login_email,
+                password: $login_password
+            })
         })
-    })
-    .then((response) => {
-        //do something awesome that makes the world a better place
-    });
+        .then((response) => {
+            console.log(response);
+        });
+}
+
+$login_submit.addEventListener('click', login);
