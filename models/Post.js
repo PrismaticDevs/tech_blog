@@ -17,13 +17,6 @@ Post.init({
         type: DataTypes.STRING,
         allowNull: false,
     },
-    userId: {
-        type: DataTypes.UUID,
-        references: {
-            model: 'user',
-            key: 'id'
-        }
-    }
 }, {
     sequelize,
     timestamps: false,

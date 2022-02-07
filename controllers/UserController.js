@@ -49,8 +49,6 @@ module.exports = {
         }
     },
     login: async(req, res) => {
-
-        console.log(req.body, 53);
         try {
             //	first find the user with the given email address
             const userData = await User.findOne({
@@ -64,18 +62,18 @@ module.exports = {
             //	check if the password from the form is the same password as the user found
             //	with the given email
             //	if that is true, save the user found in req.session.user
-            console.log(userFound.password, 72);
-            console.log(req.body.password, 73);
             if (userFound.password === req.body.password) {
                 req.session.save(() => {
                     req.session.loggedIn = true;
                     req.session.user = userFound;
-                    res.json({ success: true });
+                    res.json(req.session.user.username + " successfully logged in");
                 });
+            } else {
+                res.json({ error: "Invalid login credentials" })
             }
         } catch (e) {
             console.log(e);
-            res.json(e);
+            res.json('Failed login');
         }
     },
     signupHandler: async(req, res) => {

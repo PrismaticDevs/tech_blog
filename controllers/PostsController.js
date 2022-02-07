@@ -19,13 +19,20 @@ module.exports = {
     },
     getAllPosts: async(req, res) => {
         try {
-            const postData = await Post.findAll({});
+            const postData = await Post.findAll({
+                where: {
+                    userId: "5fa45500-5c4a-478f-9e22-4350ef5f2f09"
+                }
+            });
+            console.log(postData, 24);
             const posts = postData.map(post => post.get({ plain: true }));
+            console.log(posts);
             res.render('allPosts', {
                 posts,
             });
         } catch (error) {
-            res.json(e);
+            console.log(error, 'err', 30);
+            res.json(error);
         }
     }
 };

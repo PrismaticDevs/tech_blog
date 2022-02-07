@@ -1,9 +1,15 @@
-<ul class="list-group">
+<ul class="list-group mt-5">
   {{#each posts as |post|}}
     <li class="list-group-item">
-      <h1>My name is: {{post.title}}</h1>
-      <p>{{post.id}}</p>
-      <article>{{post.body}}</article>
+      <section class="d-flex">
+        <h1>{{post.title}}</h1>
+        <p class="p-3">{{post.id}}</p>
+      </section>
+      <article>
+        <p>{{post.body}}</p>
+        <p>Created By: {{post.userId}}</p>
+      </article>
+
     </li>
   {{/each}}
 </ul>

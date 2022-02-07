@@ -4,7 +4,7 @@ const {
     getAllPosts,
 } = require('../../../controllers/PostsController');
 
-router.route('/posts')
+router.route('/')
     .get(getAllPosts)
     .post(createPost)
 
