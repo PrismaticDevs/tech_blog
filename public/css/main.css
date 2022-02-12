@@ -4,6 +4,10 @@ p {
     text-indent: 2em;
 }
 
+h1 {
+    text-align: center;
+}
+
 form {
     width: 45%;
     margin: 0 auto;
@@ -34,4 +38,10 @@ textarea {
 
 .content {
     margin-top: 3%;
+}
+
+.post {
+    width: 80%;
+    margin: 0 auto;
+    padding: 3%;
 }
