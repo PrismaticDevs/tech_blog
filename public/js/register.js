@@ -6,7 +6,7 @@ const $register_submit = document.getElementById('register_submit');
 async function register(e) {
     e.preventDefault();
     try {
-        const response = await fetch("/register", {
+        const response = await fetch("/users/register", {
             method: "post",
             headers: {
                 'Accept': 'application/json',

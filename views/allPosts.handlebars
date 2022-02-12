@@ -1,15 +1,20 @@
+<section class="mt-5">
+  <br>
+  {{>createPost}}
+</section>
 <ul class="list-group mt-5">
   {{#each posts as |post|}}
     <li class="list-group-item">
       <section class="d-flex">
         <h1>{{post.title}}</h1>
-        <p class="p-3">{{post.id}}</p>
+        <a href="/posts/{{post.id}}"><p class="p-3">View post</p></a>
       </section>
       <article>
         <p>{{post.body}}</p>
-        <p>Created By: {{post.userId}}</p>
+        <p>Created By: {{post.user.username}}</p>
       </article>
 
     </li>
   {{/each}}
 </ul>
+</div>

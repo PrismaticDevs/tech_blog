@@ -4,7 +4,7 @@ const {
     getAllUsers,
     getUserById,
     login,
-    signupHandler
+    logout,
 } = require('../../../controllers/UserController');
 
 router.route('/')
@@ -19,5 +19,8 @@ router.route('/register')
 
 router.route('/:userId')
     .get(getUserById)
+
+router.route('/logout')
+    .post(logout)
 
 module.exports = router;

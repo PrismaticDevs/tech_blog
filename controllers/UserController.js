@@ -5,15 +5,22 @@ const {
 module.exports = {
     createUser: async(req, res) => {
         const { username, email, password } = req.body;
-        if (!username || !email || !password) {
-            return res.status(400).json({ error: "You must provide an email, username, and password" });
-        }
         try {
+            if (!username || !email || !password) {
+                return res.status(400).json({ error: "You must provide an email, username, and password" });
+            }
             const user = await User.create({
                 username,
                 email,
                 password,
             });
+
+            req.session.save(() => {
+                req.session.user = user;
+            });
+            console.log(user.id);
+            console.log(req.session.user.id);
+            res.redirect('/posts')
         } catch (error) {
             res.json(error);
         }
@@ -30,14 +37,14 @@ module.exports = {
         }
     },
     getUserById: async(req, res) => {
-        req.session.save(() => {
-            if (req.session.visitCount) {
-                req.session.visitCount++;
-            } else {
-                req.session.visitCount = 1;
-            }
-        });
         try {
+            req.session.save(() => {
+                if (req.session.visitCount) {
+                    req.session.visitCount++;
+                } else {
+                    req.session.visitCount = 1;
+                }
+            });
             const userData = await User.findByPk(req.params.userId);
             const user = userData.get({ plain: true });
             res.render('singleUser', {
@@ -57,8 +64,6 @@ module.exports = {
                 }
             });
             const userFound = userData.get({ plain: true });
-
-            console.log(userFound);
             //	check if the password from the form is the same password as the user found
             //	with the given email
             //	if that is true, save the user found in req.session.user
@@ -108,7 +113,7 @@ module.exports = {
     },
     logout: (req, res) => {
         req.session.destroy(() => {
-            res.send({ status: true });
+            res.redirect('/');
         });
     },
 };
