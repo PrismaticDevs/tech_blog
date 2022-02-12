@@ -2,6 +2,16 @@ p {
     text-indent: 2em;
 }
 
+form {
+    width: 45%;
+    margin: 0 auto;
+}
+
+form,
+textarea {
+    height: 40%;
+}
+
 .login,
 .register {
     display: flex;
