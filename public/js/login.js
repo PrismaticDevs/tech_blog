@@ -25,7 +25,7 @@ async function login(e) {
         $login_email.value = '';
         $login_password.value = '';
         setTimeout(() => {
-            location.href = 'http://localhost:3001/posts'
+            location.href = '/posts'
         }, 2000);
     } catch (error) {
         console.log(error);
