@@ -6,9 +6,6 @@ module.exports = {
     createUser: async(req, res) => {
         const { username, email, password } = req.body;
         try {
-            if (!username || !email || !password) {
-                return res.status(400).json({ error: "You must provide an email, username, and password" });
-            }
             const user = await User.create({
                 username,
                 email,
@@ -16,11 +13,12 @@ module.exports = {
             });
 
             req.session.save(() => {
+                req.session.loggedIn = true;
                 req.session.user = user;
+                req.session.userId = user.id;
+                // res.redirect('/posts')
+                res.json('fuck')
             });
-            console.log(user.id);
-            console.log(req.session.user.id);
-            res.redirect('/posts')
         } catch (error) {
             res.json(error);
         }
@@ -84,16 +82,16 @@ module.exports = {
     signupHandler: async(req, res) => {
         const { email, username, password } = req.body;
         try {
-            const createdUser = await User.create({
+            const user = await User.create({
                 email,
                 username,
                 password,
             });
-            const user = createdUser.get({ plain: true });
             req.session.save(() => {
                 req.session.loggedIn = true;
-                req.session.user = user;
-                res.redirect('/todos');
+                req.session.user = createdUser;
+                req.session.userId = createdUser.id;
+                res.redirect('/posts');
             });
         } catch (e) {
             res.json(e);

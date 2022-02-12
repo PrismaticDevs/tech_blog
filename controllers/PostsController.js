@@ -5,6 +5,9 @@ const {
 
 module.exports = {
     createPost: async(req, res) => {
+        if (!req.session.user) {
+            res.redirect("/");
+        }
         const { title, body } = req.body;
         if (!title || !body) {
             return res.status(400).json({ error: "You must provide a title and the post-body." });
@@ -15,7 +18,7 @@ module.exports = {
                 body,
                 userId: req.session.user.id
             });
-            res.render('allPosts');
+            res.status(200).json(post);
         } catch (error) {
             res.json(error);
         }
@@ -39,6 +42,7 @@ module.exports = {
             const posts = postData.map(post => post.get({ plain: true }));
             res.render('allPosts', {
                 posts,
+                loggedInUser: req.session.user || null,
             });
         } catch (error) {
             console.log(error, 'err', 30);
@@ -46,10 +50,10 @@ module.exports = {
         }
     },
     getSinglePost: async(req, res) => {
+        if (!req.session.user) {
+            res.redirect('/');
+        }
         try {
-            if (!req.session.user) {
-                res.redirect('/');
-            }
             const postData = await Post.findByPk(req.params.postId, {
                 include: [{
                     model: User,
@@ -58,6 +62,7 @@ module.exports = {
             const post = postData.get({ plain: true });
             res.render('singlePost', {
                 post,
+                loggedInUser: req.session.user || null,
             });
         } catch (error) {
             res.json(error);

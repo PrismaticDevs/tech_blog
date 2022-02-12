@@ -7,11 +7,19 @@
         href="/"
       >PrismaticDevs Blog</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/posts">Posts</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-danger" href="/logout">Logout</a>
-    </li>
+    {{#unless loggedInUser}}
+      <li class="nav-item">
+        <a id="loginBtn" class="nav-link" href="/">Login</a>
+      </li>
+    {{else}}
+      <li class="nav-item">
+        <a class="nav-link" href="/posts">Posts</a>
+      </li>
+      <li class="nav-item">
+        <a id="logoutBtn" class="nav-link text-danger" href="#">Logout</a>
+      </li>
+    {{/unless}}
   </ul>
 </main>
+
+<script src="../js/logout.js"></script>
