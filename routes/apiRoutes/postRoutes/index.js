@@ -14,7 +14,7 @@ router.route('/')
 router.route('/:postId')
     .get(getSinglePost)
 
-router.get('/myposts', getMyPosts)
+// router.get('/myposts', getMyPosts)
 
 router.patch('/:postId', editPost)
 
