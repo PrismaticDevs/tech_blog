@@ -8,4 +8,6 @@ function logoutUser() {
     location.href = "/";
 }
 
-logoutBtn.addEventListener("click", logoutUser);
+if (logoutBtn) {
+    logoutBtn.addEventListener("click", logoutUser);
+}

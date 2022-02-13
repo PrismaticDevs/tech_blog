@@ -5,7 +5,6 @@ const {
 
 module.exports = {
     createPost: async(req, res) => {
-        console.log(666);
         if (!req.session.user) {
             return res.redirect("/");
         }
@@ -19,7 +18,7 @@ module.exports = {
                 body,
                 userId: req.session.user.id
             });
-            return res.status(200).json(post);
+            return res.render('allPosts');
         } catch (error) {
             return res.json(error);
         }
@@ -45,7 +44,6 @@ module.exports = {
                 posts,
                 loggedInUser: req.session.user || null,
             });
-            //return;
         } catch (error) {
             console.log(error, 'err', 30);
             return res.json(error);
@@ -69,7 +67,6 @@ module.exports = {
                 posts,
                 loggedInUser: req.session.user || null,
             });
-            //return;
         } catch (error) {
             console.log(error, 'err', 30);
             return res.json(error);
@@ -116,6 +113,8 @@ module.exports = {
         if (!req.session.user) {
             return res.redirect('/');
         }
-        return res.render('createPost');
+        return res.render('createPost', {
+            loggedInUser: req.session.user || null,
+        });
     }
 };

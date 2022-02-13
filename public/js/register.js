@@ -24,11 +24,7 @@ async function register(e) {
         $register_username = '';
         $register_email = '';
         $register_password = '';
-        if (response.ok) {
-            location.href = "/posts";
-        } else {
-            signUpError.textContent = "Sign up error - Please fill all fields";
-        }
+        location.href = "/posts";
     } catch (error) {
         console.log(error);
     }

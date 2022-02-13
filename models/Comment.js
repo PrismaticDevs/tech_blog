@@ -13,6 +13,15 @@ Comment.init({
         type: DataTypes.TEXT,
         allowNull: false,
     },
+    userId: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        references: {
+            model: 'user',
+            key: 'id'
+        }
+
+    }
 }, {
     sequelize,
     timestamps: true,

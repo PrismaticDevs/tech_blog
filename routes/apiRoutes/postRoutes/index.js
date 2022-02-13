@@ -12,12 +12,12 @@ router.route('/')
     .get(getAllPosts)
 
 router.route('/create')
+    .get(createPostView)
     .post(createPost)
 
-router.route('/:postId')
-    .get(getSinglePost)
+router.get('/:postId', getSinglePost)
 
-router.get('/myposts', getMyPosts)
+router.get('/myposts', getMyPosts, )
 
 router.patch('/:postId', editPost)
 

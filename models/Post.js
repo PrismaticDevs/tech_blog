@@ -8,6 +8,7 @@ Post.init({
         type: DataTypes.UUID,
         defaultValue: UUIDV4,
         primaryKey: true,
+        allowNull: false
     },
     title: {
         type: DataTypes.TEXT,
@@ -17,6 +18,14 @@ Post.init({
         type: DataTypes.TEXT,
         allowNull: false,
     },
+    userId: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        references: {
+            model: 'user',
+            key: 'id'
+        }
+    }
 }, {
     sequelize,
     timestamps: true,

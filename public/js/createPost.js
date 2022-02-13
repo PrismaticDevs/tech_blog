@@ -5,7 +5,7 @@ let $post_submit = document.querySelector('#submit_post');
 async function createPost(e) {
     e.preventDefault();
     try {
-        const response = await fetch("/posts", {
+        const response = await fetch("/posts/create", {
             method: "post",
             headers: {
                 'Accept': 'application/json',
@@ -18,11 +18,9 @@ async function createPost(e) {
                 body: $post_body.value,
             })
         })
-        const data = await response.json();
-        console.log(data);
         $post_title.value = '';
         $post_body.value = '';
-        location.reload();
+        location.href = "/posts"
     } catch (error) {
         console.log(error);
     }

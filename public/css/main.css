@@ -27,11 +27,6 @@ textarea {
     text-align: center;
 }
 
-#single {
-    height: 5rem;
-    overflow: hidden;
-}
-
 #left-align-title {
     text-align: left;
 }
@@ -39,14 +34,14 @@ textarea {
 
 /* Custom Classes */
 
-.post-article {
-    padding-left: 5%;
-    padding-right: 5%;
-}
-
-.post-body {
+.single {
     height: 5rem;
     overflow: hidden;
+}
+
+.post-article {
+    padding-left: 2%;
+    padding-right: 2%;
 }
 
 .login,
