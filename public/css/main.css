@@ -27,6 +27,11 @@ textarea {
     text-align: center;
 }
 
+#single {
+    height: 5rem;
+    overflow: hidden;
+}
+
 
 /* Custom Classes */
 
