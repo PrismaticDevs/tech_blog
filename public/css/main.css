@@ -32,6 +32,10 @@ textarea {
     overflow: hidden;
 }
 
+#left-align-title {
+    text-align: left;
+}
+
 
 /* Custom Classes */
 
@@ -68,4 +72,8 @@ textarea {
     width: 80%;
     margin: 0 auto;
     padding: 3%;
+}
+
+.large {
+    font-size: 3em;
 }

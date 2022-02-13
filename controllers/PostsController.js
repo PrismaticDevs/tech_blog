@@ -23,32 +23,33 @@ module.exports = {
             res.json(error);
         }
     },
-    // getMyPosts: async(req, res) => {
-    //     try {
-    //         if (!req.session.user) {
-    //             res.redirect('/');
-    //         }
-    //         const postData = await Post.findAll({
-    //             where: {
-    //                 userId: req.session.user.id
-    //             },
-    //             include: [{
-    //                 model: User,
-    //             }],
-    //             order: [
-    //                 ['createdAt', 'DESC']
-    //             ],
-    //         });
-    //         const posts = postData.map(post => post.get({ plain: true }));
-    //         res.render('myPosts', {
-    //             posts,
-    //             loggedInUser: req.session.user || null,
-    //         });
-    //     } catch (error) {
-    //         console.log(error, 'err', 30);
-    //         res.json(error);
-    //     }
-    // },
+    getMyPosts: async(req, res) => {
+        try {
+            if (!req.session.user) {
+                res.redirect('/');
+            }
+            const postData = await Post.findAll({
+                where: {
+                    userId: req.session.user.id
+                },
+                include: [{
+                    model: User,
+                }],
+                order: [
+                    ['createdAt', 'DESC']
+                ],
+            });
+            const posts = postData.map(post => post.get({ plain: true }));
+            res.render('myPosts', {
+                posts,
+                loggedInUser: req.session.user || null,
+            });
+            //return;
+        } catch (error) {
+            console.log(error, 'err', 30);
+            res.json(error);
+        }
+    },
     getAllPosts: async(req, res) => {
         try {
             if (!req.session.user) {
@@ -67,6 +68,7 @@ module.exports = {
                 posts,
                 loggedInUser: req.session.user || null,
             });
+            //return;
         } catch (error) {
             console.log(error, 'err', 30);
             res.json(error);
@@ -108,5 +110,11 @@ module.exports = {
         } catch (error) {
             res.json(error);
         }
+    },
+    createPostView: async(req, res) => {
+        if (!req.session.user) {
+            res.redirect('/');
+        }
+        res.render('createPost');
     }
 };
