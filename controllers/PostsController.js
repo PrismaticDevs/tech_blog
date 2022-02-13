@@ -5,8 +5,9 @@ const {
 
 module.exports = {
     createPost: async(req, res) => {
+        console.log(666);
         if (!req.session.user) {
-            res.redirect("/");
+            return res.redirect("/");
         }
         const { title, body } = req.body;
         if (!title || !body) {
@@ -18,15 +19,15 @@ module.exports = {
                 body,
                 userId: req.session.user.id
             });
-            res.status(200).json(post);
+            return res.status(200).json(post);
         } catch (error) {
-            res.json(error);
+            return res.json(error);
         }
     },
     getMyPosts: async(req, res) => {
         try {
             if (!req.session.user) {
-                res.redirect('/');
+                return res.redirect('/');
             }
             const postData = await Post.findAll({
                 where: {
@@ -40,20 +41,20 @@ module.exports = {
                 ],
             });
             const posts = postData.map(post => post.get({ plain: true }));
-            res.render('myPosts', {
+            return res.render('myPosts', {
                 posts,
                 loggedInUser: req.session.user || null,
             });
             //return;
         } catch (error) {
             console.log(error, 'err', 30);
-            res.json(error);
+            return res.json(error);
         }
     },
     getAllPosts: async(req, res) => {
         try {
             if (!req.session.user) {
-                res.redirect('/');
+                return res.redirect('/');
             }
             const postData = await Post.findAll({
                 include: [{
@@ -64,19 +65,19 @@ module.exports = {
                 ],
             });
             const posts = postData.map(post => post.get({ plain: true }));
-            res.render('allPosts', {
+            return res.render('allPosts', {
                 posts,
                 loggedInUser: req.session.user || null,
             });
             //return;
         } catch (error) {
             console.log(error, 'err', 30);
-            res.json(error);
+            return res.json(error);
         }
     },
     getSinglePost: async(req, res) => {
         if (!req.session.user) {
-            res.redirect('/');
+            return res.redirect('/');
         }
         try {
             const postData = await Post.findByPk(req.params.postId, {
@@ -85,7 +86,7 @@ module.exports = {
                 }],
             });
             const post = postData.get({ plain: true });
-            res.render('singlePost', {
+            return res.render('singlePost', {
                 post,
                 loggedInUser: req.session.user || null,
             });
@@ -96,7 +97,7 @@ module.exports = {
     editPost: async(req, res) => {
         try {
             if (!req.session.user) {
-                res.redirect('/');
+                return res.redirect('/');
             }
             const updatePost = Post.update({
                 title: req.body.title,
@@ -106,15 +107,15 @@ module.exports = {
                     postId: req.params.id
                 }
             });
-            res.render('allPosts');
+            return res.render('allPosts');
         } catch (error) {
-            res.json(error);
+            return res.json(error);
         }
     },
     createPostView: async(req, res) => {
         if (!req.session.user) {
-            res.redirect('/');
+            return res.redirect('/');
         }
-        res.render('createPost');
+        return res.render('createPost');
     }
 };

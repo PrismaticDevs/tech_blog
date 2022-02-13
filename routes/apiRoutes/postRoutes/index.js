@@ -12,7 +12,7 @@ router.route('/')
     .get(getAllPosts)
 
 router.route('/create')
-    .post(createPostView)
+    .post(createPost)
 
 router.route('/:postId')
     .get(getSinglePost)

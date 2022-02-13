@@ -16,21 +16,21 @@ module.exports = {
                 req.session.loggedIn = true;
                 req.session.user = user;
                 req.session.userId = user.id;
-                res.status(200);
+                return res.status(200);
             });
         } catch (error) {
-            res.json(error);
+            return res.json(error);
         }
     },
     getAllUsers: async(req, res) => {
         try {
             const usersData = await User.findAll({});
             const users = usersData.map(user => user.get({ plain: true }));
-            res.render('allUsers', {
+            return res.render('allUsers', {
                 users,
             });
         } catch (error) {
-            res.json(e);
+            return res.json(e);
         }
     },
     getUserById: async(req, res) => {
@@ -44,12 +44,12 @@ module.exports = {
             });
             const userData = await User.findByPk(req.params.userId);
             const user = userData.get({ plain: true });
-            res.render('singleUser', {
+            return res.render('singleUser', {
                 user,
                 visitCount: req.session.visitCount,
             });
         } catch (e) {
-            res.json(e);
+            return res.json(e);
         }
     },
     login: async(req, res) => {
@@ -68,14 +68,14 @@ module.exports = {
                 req.session.save(() => {
                     req.session.loggedIn = true;
                     req.session.user = userFound;
-                    res.json(req.session.user.username + " successfully logged in");
+                    return res.json(req.session.user.username + " successfully logged in");
                 });
             } else {
-                res.json({ error: "Invalid login credentials" })
+                return res.json({ error: "Invalid login credentials" })
             }
         } catch (e) {
             console.log(e);
-            res.json('Failed login');
+            return res.json('Failed login');
         }
     },
     signupHandler: async(req, res) => {
@@ -90,10 +90,10 @@ module.exports = {
                 req.session.loggedIn = true;
                 req.session.user = createdUser;
                 req.session.userId = createdUser.id;
-                res.redirect('/posts');
+                return res.redirect('/posts');
             });
         } catch (e) {
-            res.json(e);
+            return res.json(e);
         }
     },
     loginView: (req, res) => {
@@ -110,7 +110,7 @@ module.exports = {
     },
     logout: (req, res) => {
         req.session.destroy(() => {
-            res.redirect('/');
+            return res.redirect('/');
         });
     },
 };
