@@ -16,8 +16,7 @@ module.exports = {
                 req.session.loggedIn = true;
                 req.session.user = user;
                 req.session.userId = user.id;
-                // res.redirect('/posts')
-                res.json('fuck')
+                res.status(200);
             });
         } catch (error) {
             res.json(error);

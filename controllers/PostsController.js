@@ -29,9 +29,9 @@ module.exports = {
                 res.redirect('/');
             }
             const postData = await Post.findAll({
-                where: {
-                    userId: req.session.user.id
-                },
+                // where: {
+                //     userId: req.session.user.id
+                // },
                 include: [{
                     model: User,
                 }],

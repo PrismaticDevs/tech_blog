@@ -2,16 +2,14 @@
   <br>
   {{>createPost}}
 </section>
-<ul class="list-group mt-5">
+<ul class="list-group">
   <h1>Posts</h1>
   {{#each posts as |post|}}
-    <li class="post list-group-item">
-      <section class="d-flex">
-        <h1>{{post.title}}</h1>
-        <a href="/posts/{{post.id}}"><p class="p-3">View post</p></a>
-      </section>
-      <article>
-        <p>{{post.body}}</p>
+    <li class="list-group-item">
+      <article class="post-article">
+        <h2>{{post.title}}</h2>
+        <article class="post-body">{{post.body}}</article>
+        <a href="/posts/{{post.id}}">View post</a>
         <p>Created By: {{post.user.username}}</p>
       </article>
 
@@ -19,8 +17,4 @@
   {{/each}}
 </ul>
 </div>
-
-
-
-
 

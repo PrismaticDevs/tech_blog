@@ -1,16 +1,18 @@
 /* HTML Elements */
 
-p {
+article {
     text-indent: 2em;
 }
 
 h1 {
     text-align: center;
+    margin: 0;
 }
 
 form {
     width: 45%;
     margin: 0 auto;
+    padding-bottom: 5%;
 }
 
 form,
@@ -19,7 +21,24 @@ textarea {
 }
 
 
+/* ids */
+
+#postH1 {
+    text-align: center;
+}
+
+
 /* Custom Classes */
+
+.post-article {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.post-body {
+    height: 5rem;
+    overflow: hidden;
+}
 
 .login,
 .register {
