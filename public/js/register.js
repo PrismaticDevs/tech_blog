@@ -19,12 +19,11 @@ async function register(e) {
                 email: $register_email.value,
                 password: $register_password.value
             })
-        })
-        const data = response.json();
+        });
         $register_username = '';
         $register_email = '';
         $register_password = '';
-        location.href = "/posts";
+        location.href = '/posts';
     } catch (error) {
         console.log(error);
     }

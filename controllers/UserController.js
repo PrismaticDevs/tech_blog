@@ -90,7 +90,7 @@ module.exports = {
                 req.session.loggedIn = true;
                 req.session.user = createdUser;
                 req.session.userId = createdUser.id;
-                return res.redirect('/posts');
+                return res.status(200);
             });
         } catch (e) {
             return res.json(e);
