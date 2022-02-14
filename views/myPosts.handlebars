@@ -1,10 +1,10 @@
 <section class="mt-5">
   <br>
-  {{>createPost}}
+  {{createPost}}
 </section>
 <ul class="list-group">
-  <h1>Posts</h1>
   {{#each posts as |post|}}
+  <h1>{{post.user.username}}'s' Posts</h1>
     <li class="list-group-item">
       <article class="post-article">
         <h2>{{post.title}}</h2>
@@ -12,7 +12,6 @@
         <a href="/posts/{{post.id}}">View post</a>
         <p>Created By: {{post.user.username}}</p>
       </article>
-
     </li>
   {{/each}}
 </ul>
