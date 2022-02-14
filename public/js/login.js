@@ -24,6 +24,9 @@ async function login(e) {
         $loginMessage.textContent = data;
         $login_email.value = '';
         $login_password.value = '';
+        if (data === "You must provide a valid email and password" || data === "No user with that email" || data === "Invalid password") {
+            return;
+        }
         setTimeout(() => {
             location.href = '/posts'
         }, 2000);

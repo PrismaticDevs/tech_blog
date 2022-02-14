@@ -1,14 +1,14 @@
  require('dotenv').config();
  const path = require('path');
  const express = require('express');
- const exphb = require('express-handlebars');
+ const exphbs = require('express-handlebars');
  const session = require('express-session');
 
  const sequelize = require('./config');
  const routes = require('./routes');
+ const helpers = require('./utils/helpers');
 
-
- const hbs = exphb.create({});
+ const hbs = exphbs.create({ helpers });
  const app = express();
  const PORT = process.env.PORT || 3001;
 
