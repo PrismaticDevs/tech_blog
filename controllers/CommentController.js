@@ -10,7 +10,7 @@ module.exports = {
         }
         const { text } = req.body;
         if (!text) {
-            return res.status(400).json({ error: "You must provide a title and the post-body." });
+            return res.status(400).json({ error: "You must provide comment text." });
         }
         try {
             const comment = await Comment.create({
@@ -22,12 +22,12 @@ module.exports = {
             res.json(error);
         }
     },
-    getComments: async(req, res) => {
+    getAllComments: async(req, res) => {
         try {
             if (!req.session.user) {
                 res.redirect('/');
             }
-            const postData = await Post.findAll({
+            const commentData = await Comment.findAll({
                 where: {
                     userId: req.session.user.id
                 },
@@ -38,11 +38,8 @@ module.exports = {
                     ['createdAt', 'DESC']
                 ],
             });
-            const posts = postData.map(post => post.get({ plain: true }));
-            res.render('allPosts', {
-                posts,
-                loggedInUser: req.session.user || null,
-            });
+            const comments = commentData.map(comment => comment.get({ plain: true }));
+            res.json(comments)
         } catch (error) {
             console.log(error, 'err', 30);
             res.json(error);
