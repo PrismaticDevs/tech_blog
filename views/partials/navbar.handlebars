@@ -1,12 +1,22 @@
 <main>
   <ul class="nav bg-dark text-primary p-2 fixed-top">
-    <li class="nav-item">
-      <a
-        class="nav-link active text-light"
-        aria-current="page"
-        href="/"
-      >PrismaticDevs Blog</a>
-    </li>
+    {{#if loggedInUser}}
+      <li class="nav-item">
+        <a
+          class="nav-link active text-light"
+          aria-current="page"
+          href="/posts"
+        >PrismaticDevs Blog</a>
+      </li>
+    {{else}}
+      <li class="nav-item">
+        <a
+          class="nav-link active text-light"
+          aria-current="page"
+          href="/"
+        >PrismaticDevs Blog</a>
+      </li>
+    {{/if}}
     {{#if loggedInUser}}
       <li class="nav-item">
         <a class="nav-link" href="/posts">All Posts</a>
