@@ -3,12 +3,13 @@
   {{createPost}}
 </section>
 <ul class="list-group">
+   <h1>Your Posts</h1>
   {{#each posts as |post|}}
-  <h1>{{post.user.username}}'s' Posts</h1>
     <li class="list-group-item">
       <article class="post-article">
         <h2>{{post.title}}</h2>
         <article>{{post.body}}</article>
+        <p>Posted by: {{post.user.username}}</p>
         <a href="/posts/{{post.id}}">View post</a>
       </article>
     </li>
