@@ -1,5 +1,6 @@
 <ul class="list-group">
-  <h1>Comments</h1>
+  {{>createComment}}
+  <h1 class="text-center">Comments</h1>
   {{#each comments as |comment|}}
     <li class="list-group-item">
       <article>{{comment.text}}</article>

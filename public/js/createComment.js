@@ -21,5 +21,6 @@ async function createComment(e) {
         console.log(error);
     }
 }
-
-$comment_submit.addEventListener('click', createComment);
+if ($comment_submit) {
+    $comment_submit.addEventListener('click', createComment);
+}

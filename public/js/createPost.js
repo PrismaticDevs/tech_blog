@@ -1,5 +1,5 @@
 let $post_title = document.querySelector('#post_title')
-let $post_body = document.querySelector('#post_body')
+let $post_body = document.querySelector('#editor')
 let $post_submit = document.querySelector('#submit_post');
 
 async function createPost(e) {
@@ -15,12 +15,13 @@ async function createPost(e) {
             //make sure to serialize your JSON body
             body: JSON.stringify({
                 title: $post_title.value,
-                body: $post_body.value,
+                body: $post_body.innerHTML,
             })
-        })
-        $post_title.value = '';
-        $post_body.value = '';
-        location.href = "/posts"
+        });
+        console.log($post_body.innerHTML);
+        // $post_title.value = '';
+        // $post_body.value = '';
+        // location.href = "/posts";
     } catch (error) {
         console.log(error);
     }

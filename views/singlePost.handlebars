@@ -1,7 +1,9 @@
 <article class="mt-5 p-5">
   <a href="/posts">&#8592; Back to all posts</a>
   <h1 id="left-align-title">{{post.title}}</h1>
-  <p>{{post.body}}</p>
+  <article class="single-fit">
+    {{{post.body}}}
+  </article>
   <p>Created By: {{post.user.username}}</p>
   <p>Created On: {{format_date post.createdAt}}</p>
   <button id="submit_post" class="btn btn-primary">Edit</button>
@@ -9,3 +11,6 @@
 <article>
   {{>comments}}
 </article>
+<script>
+  document.getElementsByTagName("INPUT")[0].style.display = 'none';
+</script>
