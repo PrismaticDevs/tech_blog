@@ -18,10 +18,9 @@ async function createPost(e) {
                 body: $post_body.innerHTML,
             })
         });
-        console.log($post_body.innerHTML);
-        // $post_title.value = '';
-        // $post_body.value = '';
-        // location.href = "/posts";
+        $post_title.value = '';
+        $post_body.value = '';
+        location.href = "/posts";
     } catch (error) {
         console.log(error);
     }

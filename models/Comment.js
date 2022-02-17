@@ -21,12 +21,20 @@ Comment.init({
             key: 'id'
         }
 
-    }
+    },
+    postId: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        references: {
+            model: 'post',
+            key: 'id'
+        }
+    },
 }, {
     sequelize,
     timestamps: true,
     freezeTableName: true,
-    modelName: 'posts',
+    modelName: 'comments',
 });
 
 module.exports = Comment;

@@ -1,11 +1,11 @@
 const router = require('express').Router();
 const {
     createComment,
-    getAllComments
+    getComments
 } = require('../../../controllers/CommentController');
 
 router.route('/')
-    .get(getAllComments)
+    .get(getComments)
     .post(createComment)
 
 module.exports = router;

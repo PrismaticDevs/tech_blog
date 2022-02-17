@@ -1,5 +1,5 @@
 const {
-    Post,
+    User,
     Comment
 } = require('../models');
 
@@ -8,21 +8,23 @@ module.exports = {
         if (!req.session.user) {
             res.redirect("/");
         }
-        const { text } = req.body;
+        const { text, postId } = req.body;
         if (!text) {
             return res.status(400).json({ error: "You must provide comment text." });
         }
         try {
+            console.log(req.body, req.session.user.id);
             const comment = await Comment.create({
                 text,
-                userId: req.session.user.id
+                postId,
+                userId: req.session.user.id,
             });
-            res.status(200).json(post);
+            res.json(comment);
         } catch (error) {
             res.json(error);
         }
     },
-    getAllComments: async(req, res) => {
+    getComments: async(req, res) => {
         try {
             if (!req.session.user) {
                 res.redirect('/');
