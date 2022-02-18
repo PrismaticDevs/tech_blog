@@ -1,6 +1,7 @@
 const {
     Post,
-    User
+    User,
+    Comment
 } = require('../models');
 
 module.exports = {
@@ -83,8 +84,21 @@ module.exports = {
                 }],
             });
             const post = postData.get({ plain: true });
+            const commentsData = await Comment.findAll({
+                where: {
+                    postId: req.params.postId,
+                },
+                include: [{
+                    model: User,
+                }],
+                order: [
+                    ["createdAt", "DESC"]
+                ],
+            });
+            const comments = commentsData.map((comment) => comment.get({ plain: true }));
             return res.render('singlePost', {
                 post,
+                comments,
                 loggedInUser: req.session.user || null,
             });
         } catch (error) {

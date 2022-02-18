@@ -1,10 +1,10 @@
 <ul class="list-group">
   {{>createComment}}
   <h1 class="text-center">Comments</h1>
-  {{#each comments as |comment|}}
+  {{#each this}}
     <li class="list-group-item">
-      <article>{{comment.text}}</article>
-      <p>{{comment.user.username}}</p>
+      <article>{{text}}</article>
+      <p>{{user.username}}</p>
     </li>
   {{/each}}
 </ul>
