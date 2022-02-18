@@ -25,12 +25,15 @@ module.exports = {
     },
     getComments: async(req, res) => {
         try {
+            console.log(666);
             if (!req.session.user) {
                 res.redirect('/');
             }
+            const { postId } = req.body;
+            console.log(postId);
             const commentData = await Comment.findAll({
                 where: {
-                    userId: req.session.user.id,
+                    postId,
                 },
                 include: [{
                     model: User,
@@ -40,7 +43,10 @@ module.exports = {
                 ],
             });
             const comments = commentData.map(comment => comment.get({ plain: true }));
-            res.json(comments)
+            return res.render('comments', {
+                comments,
+                loggedInUser: req.session.user || null,
+            });
         } catch (error) {
             console.log(error, 'err', 30);
             res.json(error);

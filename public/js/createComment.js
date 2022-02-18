@@ -7,7 +7,7 @@ async function createComment(e) {
         window.location.toString().split('/').length - 1
     ];
     try {
-        const response = await fetch(`/comments`, {
+        const response = await fetch(`/posts/${postId}`, {
             method: "post",
             headers: {
                 'Accept': 'application/json',
