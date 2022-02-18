@@ -19,8 +19,9 @@ async function createComment(e) {
                 text: $comment_text.value,
                 postId: postId,
             })
-        })
+        });
         $comment_text.value = '';
+        location.reload();
     } catch (error) {
         console.log(error);
     }
