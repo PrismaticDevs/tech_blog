@@ -13,7 +13,6 @@ module.exports = {
             return res.status(400).json({ error: "You must provide comment text." });
         }
         try {
-            console.log(req.body, req.session.user.id);
             const comment = await Comment.create({
                 text,
                 postId,
@@ -31,7 +30,7 @@ module.exports = {
             }
             const commentData = await Comment.findAll({
                 where: {
-                    userId: req.session.user.id
+                    userId: req.session.user.id,
                 },
                 include: [{
                     model: User,

@@ -34,11 +34,26 @@ textarea {
     background-color: #fff;
 }
 
+#comment_text {
+    border-radius: 3em 0 0 3em;
+    height: fit-content;
+    border: solid;
+    width: 30em;
+    padding: 0.25em;
+}
+
+#comment_submit {
+    border-radius: 0 3em 3em 0;
+    margin-left: -0.5em;
+    margin-top: -0.15em;
+}
+
 
 /* Custom Classes */
 
 .single {
     height: 5rem;
+    width: fit-content;
     overflow: hidden;
 }
 

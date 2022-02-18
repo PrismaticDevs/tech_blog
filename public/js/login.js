@@ -20,7 +20,6 @@ async function login(e) {
             })
         })
         const data = await response.json();
-        console.log(data);
         $loginMessage.textContent = data;
         $login_email.value = '';
         $login_password.value = '';

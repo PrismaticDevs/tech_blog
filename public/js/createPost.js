@@ -15,7 +15,7 @@ async function createPost(e) {
             //make sure to serialize your JSON body
             body: JSON.stringify({
                 title: $post_title.value,
-                body: $post_body.innerHTML,
+                body: $post_body.children[0].innerHTML,
             })
         });
         $post_title.value = '';

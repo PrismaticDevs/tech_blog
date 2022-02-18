@@ -1,8 +1,18 @@
 {
     "name": "practice-2.3",
     "version": "1.0.0",
-    "description": "",
+    "description": "This application is a blog that allows users to create accounts, login, and create posts.",
     "main": "server.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/PrismaticDevs/tech_blog"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://www.opensource.org/licenses/mit-license.php"
+        }
+    ],
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "node server.js",
