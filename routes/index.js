@@ -12,5 +12,3 @@ router.route('/posts/:postId')
 
 
 module.exports = router;
-
-//comment routes
