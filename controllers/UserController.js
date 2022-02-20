@@ -105,6 +105,7 @@ module.exports = {
                 return res.status(200);
             });
         } catch (e) {
+            console.log(e);
             return res.json(e);
         }
     },
