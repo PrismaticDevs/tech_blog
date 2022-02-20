@@ -165,5 +165,16 @@ module.exports = {
         return res.render('createPost', {
             loggedInUser: req.session.user || null,
         });
+    },
+    deletePost: async(req, res) => {
+        if (!req.session.user) {
+            return res.redirect('/');
+        }
+        const deletePost = await Post.destroy({
+            where: {
+                postId: req.params.id,
+            }
+        });
+        res.redirect('/myposts');
     }
 };
