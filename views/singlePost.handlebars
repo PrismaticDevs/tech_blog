@@ -1,12 +1,18 @@
 <article class="mt-5 p-5">
+  {{#if edit}}
+  <button class="btn btn-secondary" onclick="location.href='/myposts'">&#8592; Back to my posts</button>
+  {{else}}
   <button class="btn btn-secondary" onclick="location.href='/posts'">&#8592; Back to all posts</button>
+  {{/if}}
   <h1 id="left-align-title">{{post.title}}</h1>
   <article class="single-fit">
     {{{post.body}}}
   </article>
   <p>Created By: {{post.user.username}}</p>
   <p>Created On: {{format_date post.createdAt}}</p>
+  {{#if edit}}
   <button id="submit_post" class="btn btn-primary">Edit</button>
+  {{/if}}
 </article>
 <article>
   {{>comments comments}}

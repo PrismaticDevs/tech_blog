@@ -44,6 +44,7 @@ module.exports = {
             return res.render('myPosts', {
                 posts,
                 loggedInUser: req.session.user || null,
+                edit: true
             });
         } catch (error) {
             console.log(error, 'err', 30);
@@ -73,6 +74,39 @@ module.exports = {
             return res.json(error);
         }
     },
+    getSingleMyPost: async(req, res) => {
+        if (!req.session.user) {
+            return res.redirect('/');
+        }
+        try {
+            const postData = await Post.findByPk(req.params.postId, {
+                include: [{
+                    model: User,
+                }],
+            });
+            const post = postData.get({ plain: true });
+            const commentsData = await Comment.findAll({
+                where: {
+                    postId: req.params.postId,
+                },
+                include: [{
+                    model: User,
+                }],
+                order: [
+                    ["createdAt", "DESC"]
+                ],
+            });
+            const comments = commentsData.map((comment) => comment.get({ plain: true }));
+            return res.render('singlePost', {
+                post,
+                comments,
+                loggedInUser: req.session.user || null,
+                edit: true
+            });
+        } catch (error) {
+            res.json(error);
+        }
+    },
     getSinglePost: async(req, res) => {
         if (!req.session.user) {
             return res.redirect('/');
@@ -100,6 +134,7 @@ module.exports = {
                 post,
                 comments,
                 loggedInUser: req.session.user || null,
+                edit: false
             });
         } catch (error) {
             res.json(error);

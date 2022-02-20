@@ -4,17 +4,19 @@ const {
     getAllPosts,
     getSinglePost,
     editPost,
-    createPostView
+    createPostView,
+    getMyPosts,
+    getSingleMyPost,
 } = require('../../../controllers/PostsController');
 
 router.route('/')
-    .get(getAllPosts)
+    .get(getMyPosts)
 
 router.route('/create')
     .get(createPostView)
     .post(createPost)
 
-router.get('/:postId', getSinglePost)
+router.get('/:postId', getSingleMyPost)
 
 router.patch('/:postId', editPost)
 

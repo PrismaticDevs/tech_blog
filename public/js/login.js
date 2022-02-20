@@ -27,7 +27,7 @@ async function login(e) {
             return;
         }
         setTimeout(() => {
-            location.href = '/posts'
+            location.href = '/myposts'
         }, 2000);
     } catch (error) {
         console.log(error);

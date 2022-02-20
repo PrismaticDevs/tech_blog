@@ -1,11 +1,11 @@
 const router = require('express').Router();
 const apiRoutes = require('./apiRoutes');
-const { getMyPosts } = require('../controllers/PostsController');
+const myPostRoutes = require('./apiRoutes/mypostRoutes')
 const { getComments, createComment } = require('../controllers/CommentController');
 
 
 router.use('/', apiRoutes);
-router.get('/myPosts', getMyPosts);
+router.use('/myPosts', myPostRoutes);
 router.route('/posts/:postId')
     .get(getComments)
     .post(createComment)
