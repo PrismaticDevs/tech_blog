@@ -4,7 +4,14 @@
   {{#each this}}
     <li class="list-group-item">
       <article>{{text}}</article>
+      <br>
       <p>{{user.username}}</p>
+      <p>{{format_date createdAt}}<p>
     </li>
   {{/each}}
 </ul>
+<style>
+  p {
+    margin: 0;
+  }
+</style>
