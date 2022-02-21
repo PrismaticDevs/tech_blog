@@ -170,11 +170,17 @@ module.exports = {
         if (!req.session.user) {
             return res.redirect('/');
         }
-        const deletePost = await Post.destroy({
+        await Comment.destroy({
             where: {
-                postId: req.params.id,
+                postId: req.params.postId,
             }
         });
+        await Post.destroy({
+            where: {
+                id: req.params.postId,
+            }
+        });
+        console.log('delete', 666);
         res.redirect('/myposts');
     }
 };

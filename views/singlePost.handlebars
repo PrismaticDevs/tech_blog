@@ -13,9 +13,10 @@
   <p>Created On: {{format_date post.createdAt}}</p>
   {{#if edit}}
   <button id="submit_post" class="btn btn-primary">Edit</button>
-  <button id="submit_post" class="btn btn-danger">Delete</button>
+  <button id="delete_post" class="btn btn-danger">Delete</button>
   {{/if}}
 </article>
 <article>
   {{>comments comments}}
 </article>
+<script src="../js/deletePost.js"></script>
