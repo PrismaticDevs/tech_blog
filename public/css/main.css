@@ -105,3 +105,12 @@ a:hover {
 .large {
     font-size: 3em;
 }
+
+.create {
+    height: 95%;
+    overflow: hidden;
+}
+
+.ql-container {
+    height: 70%;
+}
