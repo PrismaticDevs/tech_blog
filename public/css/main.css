@@ -113,3 +113,8 @@ a:hover {
 .ql-container {
     height: 70%;
 }
+
+#user,
+#user:hover {
+    color: #fff;
+}

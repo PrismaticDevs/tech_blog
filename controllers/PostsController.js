@@ -44,7 +44,8 @@ module.exports = {
             return res.render('myPosts', {
                 posts,
                 loggedInUser: req.session.user || null,
-                edit: true
+                edit: true,
+                username: req.session.user.username
             });
         } catch (error) {
             console.log(error, 'err', 30);
@@ -68,6 +69,7 @@ module.exports = {
             return res.render('allPosts', {
                 posts,
                 loggedInUser: req.session.user || null,
+                username: req.session.user.username
             });
         } catch (error) {
             console.log(error, 'err', 30);
@@ -101,7 +103,8 @@ module.exports = {
                 post,
                 comments,
                 loggedInUser: req.session.user || null,
-                edit: true
+                edit: true,
+                username: req.session.user.username
             });
         } catch (error) {
             res.json(error);
@@ -134,7 +137,8 @@ module.exports = {
                 post,
                 comments,
                 loggedInUser: req.session.user || null,
-                edit: false
+                edit: false,
+                username: req.session.user.username
             });
         } catch (error) {
             res.json(error);

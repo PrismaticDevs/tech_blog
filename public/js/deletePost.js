@@ -21,4 +21,6 @@ async function deletePost(e) {
         console.log(error);
     }
 }
-$deleteBtn.addEventListener('click', deletePost);
+if ($deleteBtn) {
+    $deleteBtn.addEventListener('click', deletePost);
+}
