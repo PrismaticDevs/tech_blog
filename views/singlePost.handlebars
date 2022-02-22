@@ -1,4 +1,4 @@
-<article class="mt-5 p-5">
+<article id="currentPost" class="mt-5 p-5">
   <p id="error" class="text-danger"></p>
   {{#if edit}}
   <button class="btn btn-secondary" onclick="location.href='/myposts'">&#8592; Back to my posts</button>
@@ -12,11 +12,36 @@
   <p>Created By: {{post.user.username}}</p>
   <p>Created On: {{format_date post.createdAt}}</p>
   {{#if edit}}
-  <button id="submit_post" class="btn btn-primary">Edit</button>
+  <button id="edit_route" class="btn btn-primary">Edit</button>
   <button id="delete_post" class="btn btn-danger">Delete</button>
   {{/if}}
+  <br><br>
+  <article>
+    {{>comments comments}}
+  </article>
 </article>
-<article>
-  {{>comments comments}}
-</article>
-<script src="../js/deletePost.js"></script>
+<form id="editPost" style="display: none;" class="mt-5 pt-2 create">
+  <button onclick="location.href = '/myposts'" class="btn btn-secondary">&#8592; Back</button>
+  <h1 class="text-center">Edit Post</h1>
+  <div id="createPost" class="form-group">
+    <label for="post_title">Post Title</label>
+    <input
+      type="text"
+      class="form-control"
+      id="post_title"
+      placeholder="Post title"
+      value="{{post.title}}"
+    />
+  </div>
+  <div class="form-group">
+    <label for="post_body">Post Body</label>
+    <div id="editor">{{{post.body}}}</div>
+  </div>
+  <button id="editPostBtn" type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<script src="../js/editPost.js"></script>
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script>
+  var quill = new Quill('#editor', { theme: 'snow' });
+</script>

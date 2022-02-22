@@ -2,6 +2,7 @@ let $register_email = document.getElementById('register_email');
 let $register_password = document.getElementById('register_password');
 let $register_username = document.getElementById('register_username');
 const $register_submit = document.getElementById('register_submit');
+let $signUpMessage = document.querySelector('#signUpMessage');
 
 async function register(e) {
     e.preventDefault();
@@ -20,6 +21,11 @@ async function register(e) {
                 password: $register_password.value
             })
         });
+        const data = await response.json();
+        $signUpMessage.textContent = data;
+        if (data === "You must provide a valid email and password" || "A user already exists with that email") {
+            return;
+        }
         $register_username = '';
         $register_email = '';
         $register_password = '';

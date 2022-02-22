@@ -1,0 +1,23 @@
+<form class="mt-5 pt-2 create">
+  <h1 class="text-center">Edit Post</h1>
+  <div id="createPost" class="form-group">
+    <label for="post_title">Post Title</label>
+    <input
+      type="text"
+      class="form-control"
+      id="post_title"
+      placeholder="Post title"
+      value="{{post.title}}"
+    />
+  </div>
+  <div class="form-group">
+    <label for="post_body">Post Body</label>
+    <div id="editor">{{post.body}}</div>
+  </div>
+  <button id="editPostBtn" type="submit" class="btn btn-primary">Submit</button>
+</form>
+<script src="../js/editPost.js"></script>
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script>
+  var quill = new Quill('#editor', { theme: 'snow' });
+</script>

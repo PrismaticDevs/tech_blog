@@ -144,6 +144,20 @@ module.exports = {
             res.json(error);
         }
     },
+    editPostView: async(req, res) => {
+        if (!req.session.user) {
+            return res.redirect('/');
+        }
+        const editPost = await Post.findByPk({
+            where: {
+                postId: req.params.id
+            },
+        })
+        return res.render('editPost', {
+            editPost,
+            loggedInUser: req.session.user || null,
+        });
+    },
     editPost: async(req, res) => {
         try {
             if (!req.session.user) {
@@ -154,7 +168,7 @@ module.exports = {
                 body: req.body.title,
             }, {
                 where: {
-                    postId: req.params.id
+                    postId: req.params.postId
                 }
             });
             return res.render('allPosts');
@@ -186,5 +200,5 @@ module.exports = {
         });
         console.log('delete', 666);
         res.redirect('/myposts');
-    }
+    },
 };

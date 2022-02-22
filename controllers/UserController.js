@@ -92,7 +92,18 @@ module.exports = {
     },
     signupHandler: async(req, res) => {
         const { email, username, password } = req.body;
+        if (!email || !password) {
+            return res.json("You must provide a valid email and password");
+        }
         try {
+            const userData = await User.findOne({
+                where: {
+                    email: req.body.email,
+                },
+            });
+            if (!userData) {
+                return res.json("A user already exists with that email");
+            }
             const user = await User.create({
                 email,
                 username,
@@ -126,4 +137,3 @@ module.exports = {
         });
     },
 };
- 

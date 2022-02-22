@@ -6,6 +6,7 @@ const {
     getMyPosts,
     getSingleMyPost,
     deletePost,
+    editPostView,
 } = require('../../../controllers/PostsController');
 
 router.route('/')
@@ -17,7 +18,10 @@ router.route('/create')
 
 router.route('/:postId')
     .get(getSingleMyPost)
-    .patch(editPost)
     .delete(deletePost);
+
+router.route('/:postId/edit')
+    .put(editPost)
+    .get(editPostView)
 
 module.exports = router;

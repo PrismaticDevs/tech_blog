@@ -14,8 +14,7 @@ router.route('/create')
     .get(createPostView)
     .post(createPost)
 
-router.get('/:postId', getSinglePost)
-
-router.patch('/:postId', editPost)
+router.route('/:postId')
+    .get(getSinglePost)
 
 module.exports = router;
