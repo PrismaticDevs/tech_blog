@@ -1,4 +1,3 @@
-const $error = document.querySelector('#error');
 const $deleteBtn = document.querySelector('#delete_post');
 async function deletePost(e) {
     e.preventDefault();
@@ -17,7 +16,6 @@ async function deletePost(e) {
             location.href = "/myposts";
         }
     } catch (error) {
-        $error.textContent = error;
         console.log(error);
     }
 }
