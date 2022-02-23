@@ -6,8 +6,22 @@ const {
 
 module.exports = {
     createUser: async(req, res) => {
-        let { username, email, password } = req.body;
+        const { email, username, password } = req.body;
+        if (!email || !password) {
+            return res.json("You must provide a valid email and password");
+        }
+        if (password.length < 8) {
+            return res.json("Password must be at least 8 characters");
+        }
         try {
+            const userData = await User.findOne({
+                where: {
+                    email: req.body.email,
+                },
+            });
+            if (userData) {
+                return res.json("A user already exists with that email");
+            }
             const user = await User.create({
                 username,
                 email,
