@@ -13,6 +13,9 @@ module.exports = {
         if (password.length < 8) {
             return res.json("Password must be at least 8 characters");
         }
+        if (!email.includes('@')) {
+            return res.json("Must enter a valid email address");
+        }
         try {
             const userData = await User.findOne({
                 where: {
