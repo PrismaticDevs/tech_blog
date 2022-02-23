@@ -203,7 +203,6 @@ module.exports = {
                 id: req.params.postId,
             }
         });
-        console.log('delete', 666);
         res.redirect('/myposts');
     },
 };
