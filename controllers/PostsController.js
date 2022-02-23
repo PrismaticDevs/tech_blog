@@ -163,12 +163,17 @@ module.exports = {
             if (!req.session.user) {
                 return res.redirect('/');
             }
+            const { title, body } = req.body;
+            if (!title || !body) {
+                return res.status(400).json({ error: "You must provide a title and the post-body." });
+            }
             const updatePost = Post.update({
-                title: req.body.title,
-                body: req.body.title,
+                title,
+                body,
+                userId: req.session.user.id
             }, {
                 where: {
-                    postId: req.params.postId
+                    id: req.params.postId
                 }
             });
             return res.render('allPosts');

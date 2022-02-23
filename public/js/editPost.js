@@ -43,6 +43,5 @@ if ($edit_route) {
     $edit_route.addEventListener('click', (e) => {
         $editPost.style.display = 'block';
         $currentPost.style.display = 'none';
-        console.log('hi');
     });
 }
