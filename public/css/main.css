@@ -31,6 +31,11 @@ a:hover {
 
 /* ids */
 
+#user,
+#user:hover {
+    color: #fff;
+}
+
 #postH1 {
     text-align: center;
 }
@@ -43,22 +48,38 @@ a:hover {
     background-color: #fff;
 }
 
+#comment-bar {
+    display: inline;
+    margin: 0 auto;
+}
+
 #comment_text {
     border-radius: 3em 0 0 3em;
     height: fit-content;
     border: solid;
     width: 30em;
-    padding: 0.25em;
+    height: 2.25em;
+    padding: 0.3em;
+    padding-bottom: 0.6em;
+    margin-right: -1em;
 }
 
 #comment_submit {
     border-radius: 0 3em 3em 0;
-    margin-left: -0.5em;
-    margin-top: -0.25em;
 }
 
 #editpost {
     overflow: scroll;
+}
+
+#currentPost {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#currentPost button {
+    margin: 0 auto;
 }
 
 
@@ -111,14 +132,9 @@ a:hover {
 
 .create {
     height: 95%;
-    overflow: hidden;
+    /* overflow: scroll; */
 }
 
 .ql-container {
     height: 70%;
-}
-
-#user,
-#user:hover {
-    color: #fff;
 }

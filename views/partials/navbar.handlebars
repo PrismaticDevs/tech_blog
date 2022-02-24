@@ -1,40 +1,55 @@
-<main>
-  <ul class="nav bg-dark text-primary p-2 fixed-top">
-    {{#if loggedInUser}}
-      <li class="nav-item">
-        <a
-          class="nav-link active text-light"
-          aria-current="page"
-          href="/posts"
-        >PrismaticDevs Blog</a>
-      </li>
-    {{else}}
-      <li class="nav-item">
-        <a
-          class="nav-link active text-light"
-          aria-current="page"
-          href="/"
-        >PrismaticDevs Blog</a>
-      </li>
-    {{/if}}
-    {{#if loggedInUser}}
-      <li class="nav-item">
-        <a class="nav-link" href="/myposts">My Posts</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/posts">All Posts</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/posts/create">Create Post</a>
-      </li>
-      <li class="nav-item">
-        <a id="logoutBtn" class="nav-link text-danger" href="#">Logout</a>
-      </li>
-      <li lass="nav-item">
-        <a id="user" class="nav-link d-flex">Current User: {{username}}</a>
-      </li>
-    {{/if}}
-  </ul>
-</main>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarTogglerDemo01"
+      aria-controls="navbarTogglerDemo01"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <ul class="navbar-nav">
+        {{#if loggedInUser}}
+          <li class="nav-item">
+            <a
+              class="nav-link active text-light"
+              aria-current="page"
+              href="/posts"
+            >PrismaticDevs Blog</a>
+          </li>
+        {{else}}
+          <li class="nav-item">
+            <a
+              class="nav-link active text-light"
+              aria-current="page"
+              href="/"
+            >PrismaticDevs Blog</a>
+          </li>
+        {{/if}}
+        {{#if loggedInUser}}
+          <li class="nav-item">
+            <a class="nav-link" href="/myposts">My Posts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/posts">All Posts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/posts/create">Create Post</a>
+          </li>
+          <li class="nav-item">
+            <a id="logoutBtn" class="nav-link text-danger" href="#">Logout</a>
+          </li>
+          <li lass="nav-item">
+            <a id="user" class="nav-link d-flex">Current User: {{username}}</a>
+          </li>
+        {{/if}}
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <script src="../js/logout.js"></script>
