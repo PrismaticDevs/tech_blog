@@ -23,13 +23,10 @@ async function register(e) {
         });
         const data = await response.json();
         $signUpMessage.textContent = data;
-        if (data === "You must provide a valid email and password" || "A user already exists with that email") {
-            return;
+        console.log(data);
+        if (data == "You successfully registered") {
+            location.href = "/myposts";
         }
-        $register_username = '';
-        $register_email = '';
-        $register_password = '';
-        location.href = '/posts';
     } catch (error) {
         console.log(error);
     }

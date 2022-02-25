@@ -30,12 +30,11 @@ module.exports = {
                 email,
                 password,
             });
-
             req.session.save(() => {
                 req.session.loggedIn = true;
                 req.session.user = user;
-                req.session.userId = user.id;
-                return res.redirect('/posts');
+                req.session.user.id = user.id;
+                return res.json('You successfully registered');
             });
         } catch (error) {
             return res.json(error);
