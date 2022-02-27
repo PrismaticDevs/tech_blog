@@ -14,7 +14,7 @@
 
 ## Description
 
-This application is a blog that allows users to gesister for the app, create, edit, and delete their own blog posts.
+This application is a blog that allows users to register for the app, create, edit, and delete their own blog posts.
 
 ## Usage
 
