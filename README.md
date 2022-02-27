@@ -25,7 +25,7 @@ Then it will take you to a page where you can see all of your posts.
 If you are newly registered you will want to navigate to the create post page in the navigation menu.
 ![Create](./img/create.png)
 You can also use the navigation link for all posts.
-![All](./img/all.png.png)
+![All](./img/all.png)
 If you see a post, click the view button to see the entire post.
 You also have an option to create a comment which is saved for the posts that you comment on.
 ![Comment](./img/comment.png)
